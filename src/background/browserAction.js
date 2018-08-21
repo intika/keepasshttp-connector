@@ -240,7 +240,13 @@ browserAction.setRememberPopup = function(tabId, username, password, url, userna
 			"usernameExists": usernameExists,
 			"list": credentialsList
 		};
-
+		
+		//Remind the user to save credentials
+		var alertWindow = "alert('Keepass : Credentials Are Ready To Be Saved !!!')";
+		var alertWindowTimer = "var start = new Date().getTime();for (var i = 0; i < 1e7; i++) {if ((new Date().getTime() - start) > 5000){break;}}";
+		browser.tabs.executeScript({code : alertWindow});
+		browser.tabs.executeScript({code : alertWindowTimer});
+		
 		browserAction.show(null, {"id": id});
 	});
 }
